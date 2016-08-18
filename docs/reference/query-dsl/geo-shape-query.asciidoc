@@ -111,9 +111,17 @@ The following is a complete list of spatial relation operators available:
 
 * `INTERSECTS` - (default) Return all documents whose `geo_shape` field
 intersects the query geometry.
+An example of when to use this would be checking if a road (mapped as a
+`linestring`) overlaps the boundaries of a city (mapped as a `polygon`),
+or if the edges of two `circles` cross.
 * `DISJOINT` - Return all documents whose `geo_shape` field
-has nothing in common with the query geometry.
+has nothing in common with the query geometry. This is the opposite of
+`INTERSECTS`.
 * `WITHIN` - Return all documents whose `geo_shape` field
 is within the query geometry.
+Given a query with geometry representing a suburb (as a `polygon`), return
+all documents whose `geo_shape` field is wholly within the suburb.
 * `CONTAINS` - Return all documents whose `geo_shape` field
 contains the query geometry.
+Given a query with geometry representing an address (as a `point`), return
+all documents whose `geo_shape` field wholly contains the address.
