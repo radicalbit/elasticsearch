@@ -111,9 +111,13 @@ The following is a complete list of spatial relation operators available:
 
 * `INTERSECTS` - (default) Return all documents whose `geo_shape` field
 intersects the query geometry.
-An example of when to use this would be checking if a road (mapped as a
-`linestring`) overlaps the boundaries of a city (mapped as a `polygon`),
-or if the edges of two `circles` cross.
+An example of when to use this would be checking if a road (mapped as a 
+`polygon`) overlaps with a city (mapped as a `polygon`); The two shapes
+would intersect if:
+1. the boundary of the road overlaps with the boundary of the city
+2. the interior of the road overlaps with the boundary of the city
+3. the boundary of the road overlaps with the interior of the city
+4. the interior of the road overlaps with the interior of the city
 * `DISJOINT` - Return all documents whose `geo_shape` field
 has nothing in common with the query geometry. This is the opposite of
 `INTERSECTS`.
